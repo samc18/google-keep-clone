@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Google Keep Clone</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/main.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+   <main>
+        <div class="header">
+            <img class="header__img" src="https://www.gstatic.com/images/branding/product/1x/keep_48dp.png" alt="Google Keep logo">
+            <span class="header__title">Keep</span>
+        </div>
+        <form class="form">
+            <input 
+                class="form__title" 
+                type="text"
+                placeholder="Title"
+                id="title"
+            >
+            <input 
+                class="form__body" 
+                type="text"
+                placeholder="Take a note..."
+                id="body"
+            >
+            <div class="btns-container">
+                <button class="form__submit">Submit</button>
+                <button class="form__close">Close</button>
+            </div>
+        </form>
+        <div class="notes"></div>
+   </main> 
+   <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+/* CSS Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font-family: inherit;
+}
+
+/* Variables */
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  margin-top: 2em;
+}
+.header__title {
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 450px;
+  margin-inline: auto;
+  padding: 1em 0;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  margin-top: 2em;
+  border-radius: 5px;
+}
+.form__title {
+  width: 400px;
+  height: 25px;
+  border: none;
+}
+.form__body {
+  width: 400px;
+  height: 50px;
+  border: none;
+  display: none;
+}
+.form__title:focus, .form__body:focus {
+  outline: none;
+}
+.form__submit, .form__close {
+  border: none;
+  padding: 0.7em 1.8em;
+  border-radius: 5px;
+  cursor: pointer;
+  display: none;
+}
+.form__submit:hover, .form__close:hover {
+  filter: brightness(95%);
+}
+.form__submit {
+  background-color: #007bff;
+  color: #fff;
+}
+.form__close {
+  background-color: #fbfbfb;
+}
+
+.btns-container {
+  align-self: flex-end;
+  margin-right: 1em;
+}
+
+.notes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2em;
+  margin-top: 2em;
+}
+
+.note {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+}
+.note__title {
+  height: 25px;
+  font-weight: 500;
+}
+.note__body {
+  height: 50px;
+}
+.note__icons {
+  align-self: flex-end;
+}
+.note__icons * {
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.7);
+}/*# sourceMappingURL=main.css.map */

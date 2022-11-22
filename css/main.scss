@@ -1,0 +1,111 @@
+@import 'config';
+
+body {
+    font-family: $primary-font;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    margin-top: 2em;
+
+    &__title {
+        font-weight: map-get($font-weights, bold);
+        font-size: 1.5rem;
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 450px;
+    margin-inline: auto;
+    padding: 1em 0;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    margin-top: 2em;
+    border-radius: 5px;
+
+    &__title {
+        width: 400px;
+        height: 25px;
+        border: none;
+    }
+
+    &__body {
+        width: 400px;
+        height: 50px;
+        border: none;
+        display: none;
+    }
+
+    &__title:focus,
+    &__body:focus {
+        outline: none;
+    }
+
+    &__submit,
+    &__close {
+        border: none;
+        padding: 0.7em 1.8em;
+        border-radius: 5px;
+        cursor: pointer;
+        display: none;
+    }
+
+    &__submit:hover,
+    &__close:hover {
+        filter: brightness(95%);
+    }
+
+    &__submit {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    &__close {
+        background-color: #fbfbfb;
+    }
+}
+
+.btns-container {
+    align-self: flex-end;
+    margin-right: 1em;
+}
+
+.notes {
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap; 
+   gap: 2em; 
+   margin-top: 2em;
+}
+
+.note {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+
+    &__title {
+        height: 25px;
+        font-weight: map-get($font-weights, bold);
+    }
+
+    &__body {
+        height: 50px;
+    }
+
+    &__icons {
+        align-self: flex-end;
+    }
+
+    &__icons * {
+        cursor: pointer;
+        color:rgba(0, 0, 0, 0.7);
+    }
+}

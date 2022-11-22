@@ -1,0 +1,29 @@
+/* CSS Reset */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+input, button, textarea, select {
+    font-family: inherit;
+}
+
+/* Variables */
+
+$primary-font: 'Open Sans', sans-serif;
+
+$font-weights: (
+    "regular": 400,
+    "bold": 500
+);
