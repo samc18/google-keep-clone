@@ -12,7 +12,7 @@ class App {
         this.$deleteBtn = document.querySelector('#delete') 
         this.$paletteBtn = document.querySelector('#palette')
         this.$notes = document.querySelector('.notes')
-        this.$message = document.querySelector('.message')
+        this.$placeholder = document.querySelector('.placeholder')
         this.handleEvents()
     }
     
@@ -86,7 +86,7 @@ class App {
     }
 
     displayNotes() {
-        this.$message.style.display = this.notes.length > 0 ? 'none' : 'block'
+        this.$placeholder.style.display = this.notes.length > 0 ? 'none' : 'flex'
 
         this.$notes.innerHTML = this.notes.map(note => {
             const { title, body, color, id } = note

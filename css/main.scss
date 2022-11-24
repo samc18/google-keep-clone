@@ -5,9 +5,7 @@ body {
 }
 
 .header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flexCenter;
     gap: 1em;
     margin-top: 2em;
 
@@ -18,10 +16,8 @@ body {
 }
 
 .form {
-    display: flex;
+    @include flexCenter;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     width: 450px;
     margin-inline: auto;
     padding: 1em 0;
@@ -77,8 +73,7 @@ body {
 }
 
 .notes {
-   display: flex;
-   justify-content: center;
+   @include flexCenter;
    flex-wrap: wrap; 
    gap: 2em; 
    margin-top: 2em;
@@ -111,10 +106,18 @@ body {
     }
 }
 
-.message {
-    color: #80868b;
-    font-size: 1.2rem;
-    display: block;
-    text-align: center;
+.placeholder {
     margin-top: 9em;
+    @include flexCenter;
+    flex-direction: column;
+    gap: 1em;
+
+    & .fa-lightbulb {
+        font-size: 2em;
+        color: #80868b;
+    }
+    &__message {
+        color: #80868b;
+        font-size: 1.2rem;
+    }
 }
