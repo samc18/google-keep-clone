@@ -1,5 +1,9 @@
 class App {
     constructor() {
+        this.notes = []
+        this.title = ''
+        this.body = ''
+
         this.$form = document.querySelector('.form')
         this.$title = document.querySelector('#title') 
         this.$body = document.querySelector('#body')
@@ -7,6 +11,8 @@ class App {
         this.$formClose = document.querySelector('.form__close')
         this.$deleteBtn = document.querySelector('#delete') 
         this.$paletteBtn = document.querySelector('#palette')
+        this.$notes = document.querySelector('.notes')
+        this.$message = document.querySelector('.message')
         this.handleEvents()
     }
     
@@ -18,14 +24,23 @@ class App {
 
         document.addEventListener('submit', e => {
             e.preventDefault()
+            const title = this.$title.value
+            const body = this.$body.value
+            const hasNote = title || body
+            hasNote && this.addNote({ title: this.$title.value, body: this.$body.value })
         })
     }
 
     handleForm(e) {
         const isFormClicked = this.$form.contains(e.target)
+        const title = this.$title.value
+        const body = this.$body.value
+        const hasNote = title || body
 
         if (isFormClicked) {
             this.openForm()
+        } else if (hasNote) {
+            this.addNote({title, body })
         } else {
             this.closeForm()
         }
@@ -47,18 +62,37 @@ class App {
         this.$body.style.display = 'none'
         this.$formSubmit.style.display = 'none'
         this.$formClose.style.display = 'none'
+        this.$title.value = ''
+        this.$body.value = ''
+    }
+
+    addNote({ title, body }) {
+        const newNote = {
+            title,
+            body,
+            color: 'white',
+            id: this.notes.length > 0 ? this.notes[this.notes.length - 1].id + 1 : 1
+        }
+        this.notes = [...this.notes, newNote]
+        this.closeForm()
+        this.displayNotes()
     }
 
     displayNotes() {
-        const noteHtml = `
-            <div class="note">
-                <span class="note__title">Title</span>
-                <span class="note__body">this is a note ..napusdhf</span>
-                <div class="note__icons">
-                    <i class="fa-solid fa-trash" id="delete"></i>
-                    <i class="fa-solid fa-palette" id="palette"></i>
-                </div>
-            </div>`
+        if (this.notes.length > 0) {
+            this.$message.style.display = 'none'
+        }
+        this.$notes.innerHTML = this.notes.map(note => {
+            const { title, body } = note
+            return `<div class="note">
+                        <span class="note__title">${title}</span>
+                        <span class="note__body">${body}</span>
+                        <div class="note__icons">
+                            <i class="fa-solid fa-trash" id="delete"></i>
+                            <i class="fa-solid fa-palette" id="palette"></i>
+                        </div>
+                    </div>`
+        }).join('')
     }
 }
 

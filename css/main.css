@@ -98,6 +98,7 @@ body {
   padding: 1em;
   border: 1px solid #e0e0e0;
   border-radius: 5px;
+  width: 200px;
 }
 .note__title {
   height: 25px;
@@ -112,4 +113,12 @@ body {
 .note__icons * {
   cursor: pointer;
   color: rgba(0, 0, 0, 0.7);
+}
+
+.message {
+  color: #80868b;
+  font-size: 1.2rem;
+  display: block;
+  text-align: center;
+  margin-top: 9em;
 }/*# sourceMappingURL=main.css.map */
