@@ -129,4 +129,46 @@ body {
 .placeholder__message {
   color: #80868b;
   font-size: 1.2rem;
+}
+
+.colors {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  gap: 1em;
+  border: 1.5px solid black;
+  border-radius: 5px;
+  padding: 0.5em;
+  width: 150px;
+  position: absolute;
+  inset: 0;
+  height: 40px;
+  background-color: #fff;
+}
+.colors__option {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  border: 1px solid #dedede;
+}
+.colors__option:hover, .colors__option:focus {
+  border: 2px solid black;
+}
+
+#white {
+  background-color: #fff;
+}
+
+#purple {
+  background-color: #d7aefb;
+}
+
+#orange {
+  background-color: #fbbc04;
+}
+
+#teal {
+  background-color: #a7ffeb;
 }/*# sourceMappingURL=main.css.map */

@@ -13,6 +13,8 @@ class App {
         this.$paletteBtn = document.querySelector('#palette')
         this.$notes = document.querySelector('.notes')
         this.$placeholder = document.querySelector('.placeholder')
+        this.$colors = document.querySelector('.colors')
+
         this.handleEvents()
     }
     
@@ -29,6 +31,22 @@ class App {
             const body = this.$body.value
             const hasNote = title || body
             hasNote && this.addNote({ title: this.$title.value, body: this.$body.value })
+        })
+
+        document.addEventListener('mouseover', e => {
+            this.openTooltip(e)
+        }) 
+
+        document.addEventListener('mouseout', e => {
+            this.closeTooltip(e)
+        })
+
+        this.$colors.addEventListener('mouseover', function() {
+            this.style.display = 'flex'
+        })
+
+        this.$colors.addEventListener('mouseout', function() {
+            this.style.display = 'none'
         })
     }
 
@@ -65,6 +83,20 @@ class App {
         this.$formClose.style.display = 'none'
         this.$title.value = ''
         this.$body.value = ''
+    }
+
+    openTooltip(e) {
+        if (!e.target.matches('#palette')) return
+        const noteCoords = e.target.getBoundingClientRect()
+        const horizontal = noteCoords.left
+        const vertical = noteCoords.top + 15
+        this.$colors.style.transform = `translate(${horizontal}px, ${vertical}px)`
+        this.$colors.style.display = 'flex'
+    }
+
+    closeTooltip(e) {
+        if (!e.target.matches('#palette')) return
+        this.$colors.style.display = 'none'
     }
 
     addNote({ title, body }) {

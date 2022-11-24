@@ -121,3 +121,46 @@ body {
         font-size: 1.2rem;
     }
 }
+
+.colors {
+    @include flexCenter;
+    display: none;
+    gap: 1em;
+    border: 1.5px solid black;
+    border-radius: 5px;
+    padding: 0.5em;
+    width: 150px;
+    position: absolute;
+    inset: 0;
+    height: 40px;
+    background-color: #fff;
+
+    &__option {
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        border: 1px solid #dedede;
+
+        &:hover,
+        &:focus {
+            border: 2px solid black;
+        }
+    }
+}
+
+#white {
+    background-color: #fff;
+}
+
+#purple {
+    background-color: #d7aefb;
+}
+
+#orange {
+    background-color: #fbbc04;
+}
+
+#teal {
+    background-color: #a7ffeb;
+}
