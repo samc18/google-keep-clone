@@ -20,6 +20,7 @@ class App {
         document.addEventListener('click', e => {
             this.handleForm(e)
             this.handleCloseFormBtn(e)
+            this.deleteNote(e)
         })
 
         document.addEventListener('submit', e => {
@@ -78,17 +79,22 @@ class App {
         this.displayNotes()
     }
 
+    deleteNote(e) {
+        if (!e.target.matches('#delete')) return 
+        this.notes = this.notes.filter(note => Number(e.target.dataset.id) !== note.id)
+        this.displayNotes()
+    }
+
     displayNotes() {
-        if (this.notes.length > 0) {
-            this.$message.style.display = 'none'
-        }
+        this.$message.style.display = this.notes.length > 0 ? 'none' : 'block'
+
         this.$notes.innerHTML = this.notes.map(note => {
-            const { title, body } = note
+            const { title, body, color, id } = note
             return `<div class="note">
                         <span class="note__title">${title}</span>
                         <span class="note__body">${body}</span>
                         <div class="note__icons">
-                            <i class="fa-solid fa-trash" id="delete"></i>
+                            <i class="fa-solid fa-trash" id="delete" data-id="${id}"></i>
                             <i class="fa-solid fa-palette" id="palette"></i>
                         </div>
                     </div>`
