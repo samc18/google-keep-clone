@@ -3,6 +3,7 @@ class App {
         this.notes = []
         this.title = ''
         this.body = ''
+        this.id = ''
 
         this.$form = document.querySelector('.form')
         this.$title = document.querySelector('#title') 
@@ -23,6 +24,8 @@ class App {
             this.handleForm(e)
             this.handleCloseFormBtn(e)
             this.deleteNote(e)
+            const color = e.target.dataset.color
+            color && this.editNoteColor(color)
         })
 
         document.addEventListener('submit', e => {
@@ -92,6 +95,7 @@ class App {
         const vertical = noteCoords.top + 15
         this.$colors.style.transform = `translate(${horizontal}px, ${vertical}px)`
         this.$colors.style.display = 'flex'
+        this.id = e.target.dataset.id
     }
 
     closeTooltip(e) {
@@ -117,17 +121,24 @@ class App {
         this.displayNotes()
     }
 
+    editNoteColor(color) {
+        this.notes = this.notes.map(note => {
+            return note.id === Number(this.id) ? { ...note, color } : note
+        })
+        this.displayNotes()
+    }
+
     displayNotes() {
         this.$placeholder.style.display = this.notes.length > 0 ? 'none' : 'flex'
 
         this.$notes.innerHTML = this.notes.map(note => {
             const { title, body, color, id } = note
-            return `<div class="note">
+            return `<div class="note" style="background-color: ${color}">
                         <span class="note__title">${title}</span>
                         <span class="note__body">${body}</span>
                         <div class="note__icons">
                             <i class="fa-solid fa-trash" id="delete" data-id="${id}"></i>
-                            <i class="fa-solid fa-palette" id="palette"></i>
+                            <i class="fa-solid fa-palette" id="palette" data-id="${id}"></i>
                         </div>
                     </div>`
         }).join('')
