@@ -1,6 +1,6 @@
 class App {
     constructor() {
-        this.notes = []
+        this.notes = JSON.parse(localStorage.getItem('notes')) || []
         this.title = ''
         this.body = ''
         this.id = ''
@@ -19,6 +19,7 @@ class App {
         this.$modalTitle = document.querySelector('.modal__title')
         this.$modalBody = document.querySelector('.modal__body')
 
+        this.render()
         this.handleEvents()
     }
     
@@ -118,20 +119,20 @@ class App {
         }
         this.notes = [...this.notes, newNote]
         this.closeForm()
-        this.displayNotes()
+        this.render()
     }
 
     deleteNote(e) {
         if (!e.target.matches('#delete')) return 
         this.notes = this.notes.filter(note => Number(e.target.dataset.id) !== note.id)
-        this.displayNotes()
+        this.render()
     }
 
     editNoteColor(color) {
         this.notes = this.notes.map(note => {
             return note.id === Number(this.id) ? { ...note, color } : note
         })
-        this.displayNotes()
+        this.render()
     }
 
     openModal(e) {
@@ -163,7 +164,16 @@ class App {
         this.notes = this.notes.map(note => {
             return note.id === Number(this.id) ? {...note, title, body} : note
         })
+        this.render()
+    }
+
+    render() {
+        this.storeNotes()
         this.displayNotes()
+    }
+
+    storeNotes() {
+        localStorage.setItem('notes', JSON.stringify(this.notes))
     }
 
     displayNotes() {
