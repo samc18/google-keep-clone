@@ -146,6 +146,10 @@ body {
         &:focus {
             border: 2px solid black;
         }
+
+        &:focus {
+            outline: none;
+        }
     }
 }
 
@@ -163,4 +167,56 @@ body {
 
 #teal {
     background-color: #a7ffeb;
+}
+
+.modal {
+    background-color: rgba(229, 229, 229, 0.5);
+    position: fixed;
+    inset: 0;
+    @include flexCenter;
+    display: none;
+
+    &__content {
+        @include flexCenter;
+        flex-direction: column;
+        padding: 1em;
+        width: 300px;
+        border: none;
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+        margin-top: 2em;
+        border-radius: 5px;
+        background-color: #fff;
+    }
+
+    &__title,
+    &__body {
+        border: none;
+        width: 100%;
+    }
+
+    &__title:focus,
+    &__body:focus {
+        outline: none;
+    }
+
+    &__title {
+        height: 25px;
+    }
+
+    &__body {
+        height: 50px;
+    }
+
+    &__btn {
+        border: none;
+        padding: 0.7em 1.8em;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #fbfbfb;
+
+        &:hover,
+        &:focus {
+            filter: brightness(95%);
+        }
+    }
 }

@@ -156,6 +156,9 @@ body {
 .colors__option:hover, .colors__option:focus {
   border: 2px solid black;
 }
+.colors__option:focus {
+  outline: none;
+}
 
 #white {
   background-color: #fff;
@@ -171,4 +174,50 @@ body {
 
 #teal {
   background-color: #a7ffeb;
+}
+
+.modal {
+  background-color: rgba(229, 229, 229, 0.5);
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.modal__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1em;
+  width: 300px;
+  border: none;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  margin-top: 2em;
+  border-radius: 5px;
+  background-color: #fff;
+}
+.modal__title, .modal__body {
+  border: none;
+  width: 100%;
+}
+.modal__title:focus, .modal__body:focus {
+  outline: none;
+}
+.modal__title {
+  height: 25px;
+}
+.modal__body {
+  height: 50px;
+}
+.modal__btn {
+  border: none;
+  padding: 0.7em 1.8em;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #fbfbfb;
+}
+.modal__btn:hover, .modal__btn:focus {
+  filter: brightness(95%);
 }/*# sourceMappingURL=main.css.map */

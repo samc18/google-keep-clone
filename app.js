@@ -15,6 +15,9 @@ class App {
         this.$notes = document.querySelector('.notes')
         this.$placeholder = document.querySelector('.placeholder')
         this.$colors = document.querySelector('.colors')
+        this.$modal = document.querySelector('.modal')
+        this.$modalTitle = document.querySelector('.modal__title')
+        this.$modalBody = document.querySelector('.modal__body')
 
         this.handleEvents()
     }
@@ -26,6 +29,9 @@ class App {
             this.deleteNote(e)
             const color = e.target.dataset.color
             color && this.editNoteColor(color)
+            this.selectNote(e)
+            this.openModal(e)
+            this.closeModal(e)
         })
 
         document.addEventListener('submit', e => {
@@ -128,12 +134,44 @@ class App {
         this.displayNotes()
     }
 
+    openModal(e) {
+        if(e.target.matches('#palette')) return
+        if (!this.$notes.contains(e.target)) return
+        this.$modal.style.display = 'flex'
+        this.$modalTitle.value = this.title
+        this.$modalBody.value = this.body
+    }
+
+    closeModal(e) {
+        if (!e.target.matches('.modal__btn')) return
+        this.editNote()
+        this.$modal.style.display = 'none'
+    }
+
+    selectNote(e) {
+        const $selectedNote = e.target.closest('.note')
+        if (!$selectedNote) return
+        const [$noteTitle, $noteBody] = $selectedNote.children
+        this.title = $noteTitle.innerText
+        this.body = $noteBody.innerText
+        this.id = $selectedNote.dataset.id
+    }
+
+    editNote() {
+        const title = this.$modalTitle.value
+        const body = this.$modalBody.value
+        this.notes = this.notes.map(note => {
+            return note.id === Number(this.id) ? {...note, title, body} : note
+        })
+        this.displayNotes()
+    }
+
     displayNotes() {
         this.$placeholder.style.display = this.notes.length > 0 ? 'none' : 'flex'
 
         this.$notes.innerHTML = this.notes.map(note => {
             const { title, body, color, id } = note
-            return `<div class="note" style="background-color: ${color}">
+            return `<div class="note" style="background-color: ${color}" data-id="${id}">
                         <span class="note__title">${title}</span>
                         <span class="note__body">${body}</span>
                         <div class="note__icons">
