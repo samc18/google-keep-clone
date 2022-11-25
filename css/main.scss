@@ -85,15 +85,16 @@ body {
     padding: 1em;
     border: 1px solid #e0e0e0;
     border-radius: 5px;
-    width: 200px;
+    width: 230px;
 
-    &__title {
-        height: 25px;
-        font-weight: map-get($font-weights, bold);
+    &__title,
+    &__body {
+        word-wrap: break-word;
+        white-space: pre-wrap;
     }
 
-    &__body {
-        height: 50px;
+    &__title {
+        font-weight: map-get($font-weights, bold);
     }
 
     &__icons {
@@ -219,4 +220,8 @@ body {
             filter: brightness(95%);
         }
     }
+}
+
+.hide-title {
+    display: none;
 }

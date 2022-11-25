@@ -172,7 +172,7 @@ class App {
         this.$notes.innerHTML = this.notes.map(note => {
             const { title, body, color, id } = note
             return `<div class="note" style="background-color: ${color}" data-id="${id}">
-                        <span class="note__title">${title}</span>
+                        <span class="note__title ${!title && "hide-title"}">${title}</span>
                         <span class="note__body">${body}</span>
                         <div class="note__icons">
                             <i class="fa-solid fa-trash" id="delete" data-id="${id}"></i>

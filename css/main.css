@@ -97,14 +97,14 @@ body {
   padding: 1em;
   border: 1px solid #e0e0e0;
   border-radius: 5px;
-  width: 200px;
+  width: 230px;
+}
+.note__title, .note__body {
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 .note__title {
-  height: 25px;
   font-weight: 500;
-}
-.note__body {
-  height: 50px;
 }
 .note__icons {
   align-self: flex-end;
@@ -220,4 +220,8 @@ body {
 }
 .modal__btn:hover, .modal__btn:focus {
   filter: brightness(95%);
+}
+
+.hide-title {
+  display: none;
 }/*# sourceMappingURL=main.css.map */
